@@ -1,0 +1,21 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+// import tableApp from './reducers';
+// import configureStore from './store/configureStore';
+import App from './containers/App';
+
+// const store = createStore();
+
+import configureStore from './store/configureStore'
+
+const store = configureStore()
+
+ReactDOM.render(
+  <Provider store={ store }>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
