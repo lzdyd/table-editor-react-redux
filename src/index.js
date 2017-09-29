@@ -7,11 +7,13 @@ import { createStore } from 'redux';
 // import configureStore from './store/configureStore';
 import App from './containers/App';
 
+import "./common/style.scss";
+
 // const store = createStore();
 
-import configureStore from './store/configureStore'
+import configureStore from './store/configureStore';
 
-const store = configureStore()
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={ store }>

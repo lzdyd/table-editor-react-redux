@@ -1,0 +1,79 @@
+.employees-controls {
+
+  .controls-list {
+    margin: 0;
+    padding: 0;
+    width: 900px;
+    list-style-type: none;
+
+    .controls-elem {
+      display: inline-block;
+      position: relative;
+
+      &:not(:nth-of-type(3n)) {
+        margin-right: 16px;
+      }
+
+      .sprite {
+        position: absolute;
+        top: 4px;
+        left: 6px;
+        width: 32px;
+        height: 32px;
+        background-image: url('./spritesheet.png');
+        background-repeat: no-repeat;
+      }
+
+      .sprite-add {
+        background-position: -5px -5px;
+      }
+
+      .sprite-fire {
+        background-position: -89px -47px;
+      }
+
+      .sprite-transfer {
+        background-position: -5px -47px;
+      }
+
+      .sprite-change {
+        background-position: -47px -47px;
+      }
+
+      .sprite-logs {
+        background-position: -89px -5px;
+      }
+
+      .sprite-certificates {
+        background-position: -47px -5px;
+      }
+
+      .controls-btn {
+        box-sizing: border-box;
+        display: block;
+        width: 230px;
+        padding: 10px;
+        padding-left: 40px;
+        margin-bottom: 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #205371;
+        font-family: Calibri;
+
+        &:hover, &:visited, &:link, &:active {
+          text-decoration: none;
+        }
+        &:focus {
+          color: #fff;
+        }
+
+        > * {
+          display: inline-block;
+        }
+      }
+    }
+
+  }
+
+}
