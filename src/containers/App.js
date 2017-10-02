@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import * as pageActions from '../actions/PageActions'
+import * as pageActions from '../actions/PageActions';
+import * as tableActions from '../actions/TableActions';
 import EmployeesControls from '../components/EmployeesControls/index';
-import EmployeesTable from '../components/EmployeesTable';
+import EmployeesTable from '../components/EmployeesTable/index';
 
 class App extends Component {
   render() {
+    console.log(this.props.employeesTable.error)
     const { setName } = this.props.pageActions;
 
     return (
@@ -17,7 +19,12 @@ class App extends Component {
           setName={ setName }
           fetching={ this.props.employeesControls.fetching }
         />
-        <EmployeesTable />
+        <EmployeesTable
+          getAllEmployees={ this.props.tableActions.getAllEmployees }
+          data={ this.props.employeesTable.data }
+          fetching={ this.props.employeesTable.fetching }
+          error={ this.props.employeesTable.error }
+        />
       </div>
     );
   }
@@ -38,7 +45,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    pageActions: bindActionCreators(pageActions, dispatch)
+    pageActions: bindActionCreators(pageActions, dispatch),
+    tableActions: bindActionCreators(tableActions, dispatch)
   };
 };
 

@@ -1,0 +1,22 @@
+.table-row-headers {
+  .table-cell-headers {
+    position: relative;
+    border-bottom: 3px solid #ddd;
+
+    &:not(:last-child) {
+      border-right: 1px solid #ddd;
+    }
+  }
+
+  .table-cell-headers::after {
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+  }
+  .table-cell-headers.sorted-column[data-sort-state='disc']::after {
+    content: " \2193";
+  }
+  .table-cell-headers.sorted-column[data-sort-state='asc']::after {
+    content: " \2191";
+  }
+}

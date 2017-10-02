@@ -32,7 +32,7 @@ export default function page(state = initialState, action) {
       return { ...state, name: action.payload, fetching: true };
 
     case SET_NAME_SUCCESS:
-      return { ...state, name: action.payload, fetching: false };
+      return { ...state, name: action.payload, fetching: true };
 
     default:
       return state;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import ModalBox from './components/ModalBox/index';
+
 import './style.scss';
 
 const listData = {
@@ -11,18 +13,22 @@ const listData = {
   certificates: 'Сертификаты сотрудника'
 };
 
-const listHTML = Object.keys(listData).map((key, i) => {
-  return (
-    <li className="controls-elem" key={ i } title={ listData[key] }>
-      <a href="" className={`controls-btn ${key}`} role="button">
-        <i className={`sprite sprite-${key}`}></i>
-        { listData[key] }
-      </a>
-    </li>
-  );
-});
-
 export default class EmployeesControls extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modalBoxesIsOpenStates: {
+        add: false,
+        fire: false,
+        transfer: false,
+        change: false,
+        logs: false,
+        certificates: false
+      }
+    }
+  }
+
   onClick() {
     this.props.setName('Controls panel updated');
   }
@@ -31,11 +37,36 @@ export default class EmployeesControls extends Component {
     if (e.target.tagName === 'A') e.preventDefault();
   };
 
+  toggleModalBox(modalboxName) {
+    this.setState({
+      modalBoxesIsOpenStates: {
+        [modalboxName]: !this.state.modalBoxesIsOpenStates[modalboxName]
+      }
+    });
+  }
+
   render() {
+    const listHTML = Object.keys(listData).map((key, i) => {
+      return (
+        <li className="controls-elem" key={ i } title={ listData[key] }>
+          <a href="" className={`controls-btn ${key}`} role="button" onClick={ () => { ::this.toggleModalBox(key) } }>
+            <i className={`sprite sprite-${key}`}></i>
+            { listData[key] }
+          </a>
+
+          <ModalBox
+            show={ this.state.modalBoxesIsOpenStates[key] }
+            onClose={ ::this.toggleModalBox }
+            modalboxName={ key[0].toUpperCase() + key.slice(1) }
+          />
+        </li>
+      );
+    });
+
     return (
       <div className="employees-controls" onClick={ this.onControlsClick }>
-        <h1>{ this.props.name }</h1>
-        <button onClick={ ::this.onClick }>Change name</button>
+{/*        <h1>{ this.props.name }</h1>
+        <button onClick={ ::this.onClick }>Change name</button>*/}
 
         <ul className="controls-list">
           { listHTML }
