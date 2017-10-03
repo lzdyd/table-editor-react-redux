@@ -9,8 +9,8 @@ import EmployeesTable from '../components/EmployeesTable/index';
 
 class App extends Component {
   render() {
-    console.log(this.props.employeesTable.error)
     const { setName } = this.props.pageActions;
+    const { setNewActiveRow } = this.props.tableActions;
 
     return (
       <div className="main-app">
@@ -24,6 +24,8 @@ class App extends Component {
           data={ this.props.employeesTable.data }
           fetching={ this.props.employeesTable.fetching }
           error={ this.props.employeesTable.error }
+          activeRow={ this.props.employeesTable.activeRow }
+          setNewActiveRow={ setNewActiveRow }
         />
       </div>
     );

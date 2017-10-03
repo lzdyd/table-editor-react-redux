@@ -2,7 +2,7 @@ const getAllEmployees = (url) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url, true, 'admin', 'admin');
+    xhr.open('GET', url);
 
     xhr.onload = () => {
       if (xhr.status === 200) {

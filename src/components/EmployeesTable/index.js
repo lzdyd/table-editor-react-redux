@@ -9,12 +9,16 @@ export default class EmployeesTable extends Component {
     this.props.getAllEmployees();
   }
 
+  onTableRowClick(id) {
+    this.props.setNewActiveRow(id);
+  }
+
   render() {
     const { fetching, error } = this.props;
 
     if (fetching) return <h1>Loading...</h1>;
 
-    if (error) return <h1>Data is inapproachable</h1>
+    if (error) return <h1>Data is inapproachable</h1>;
     // For filtering
     this.initialData = this.props.data;
 
@@ -23,7 +27,11 @@ export default class EmployeesTable extends Component {
       const itemValues = Object.values(item);
 
       return (
-        <div className="table-row" key={ item.id } data-key={ item.id }>
+        <div
+          className={`table-row${((item.id === this.props.activeRow) ? ' selected' : '')}`}
+          key={ item.id }
+          data-key={ item.id }
+          onClick={ () => { ::this.onTableRowClick(item.id) } }>
           {
             itemValues.map((cellData, key) => {
               return (
