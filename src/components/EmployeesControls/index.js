@@ -34,7 +34,7 @@ export default class EmployeesControls extends Component {
   }
 
   onControlsClick(e) {
-    if (e.target.tagName === 'A') e.preventDefault();
+    if (e.target.closest('.controls-btn')) e.preventDefault();
   };
 
   toggleModalBox(modalboxName) {
@@ -58,6 +58,8 @@ export default class EmployeesControls extends Component {
             show={ this.state.modalBoxesIsOpenStates[key] }
             onClose={ ::this.toggleModalBox }
             modalboxName={ key[0].toUpperCase() + key.slice(1) }
+            data={ (key === 'change') ? this.props.data : null }
+            activeRow={ (key === 'change') ? this.props.activeRow : null }
           />
         </li>
       );

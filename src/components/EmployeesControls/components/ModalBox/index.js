@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ({ show, onClose, modalboxName }) {
+export default function ({ show, onClose, modalboxName, data, activeRow }) {
   if (!show) {
     return null;
   }
@@ -36,7 +36,7 @@ export default function ({ show, onClose, modalboxName }) {
   return (
     <div className="backdrop" style={ backdropStyle } onClick={ onModalBoxClick }>
       <div className="modal" style={ modalStyle }>
-        <ModalBoxHTML />
+        <ModalBoxHTML data={ data } activeRow={ activeRow }/>
         <button className="close-button">Close</button>
       </div>
     </div>

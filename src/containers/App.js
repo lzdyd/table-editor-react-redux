@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 
 import * as pageActions from '../actions/PageActions';
 import * as tableActions from '../actions/TableActions';
@@ -18,6 +18,8 @@ class App extends Component {
           name={ this.props.employeesControls.name }
           setName={ setName }
           fetching={ this.props.employeesControls.fetching }
+          data={ this.props.employeesTable.data }
+          activeRow={ this.props.employeesTable.activeRow }
         />
         <EmployeesTable
           getAllEmployees={ this.props.tableActions.getAllEmployees }
