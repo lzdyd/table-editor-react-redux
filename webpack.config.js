@@ -26,7 +26,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      api: path.resolve(__dirname, 'src/services/api')
+      api: path.resolve(__dirname, 'src/services/api'),
+      actions: path.resolve(__dirname, 'src/actions')
     }
   },
 

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './style.scss';
+
 export default function ({ show, onClose, modalboxName, data, activeRow }) {
   if (!show) {
     return null;

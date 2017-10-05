@@ -2,10 +2,12 @@ const getAllEmployees = (url) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
+    xhr.open('GET', url);
+
+    xhr.setRequestHeader("Authorization", "Basic " + btoa('admin' + ":" + 'admin'));
+
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('content-type', 'application/json');
-
-    xhr.open('GET', url);
 
     xhr.onload = () => {
       if (xhr.status === 200) {
@@ -15,7 +17,9 @@ const getAllEmployees = (url) => {
       }
     };
 
-    xhr.onerror = () => reject(Error('Network error'));
+    xhr.onerror = () => {
+      reject(Error('Network error'));
+    };
 
     xhr.send();
   });
