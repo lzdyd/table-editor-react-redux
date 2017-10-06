@@ -1,10 +1,10 @@
-const getAllEmployees = (url) => {
+const changeEmployee = (id, fieldsData) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url);
+    const body = '';
 
-    // xhr.setRequestHeader("Authorization", "Basic " + btoa('admin' + ":" + 'admin'));
+    xhr.open('POST', `http://localhost:8080/test/employees/${id}/edit`);
 
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('content-type', 'application/json');

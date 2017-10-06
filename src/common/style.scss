@@ -8,3 +8,11 @@
   src: url("./fonts/Proxima Nova/Proxima Nova Regular.otf");
 }
 */
+
+.noscroll { overflow: hidden; }
+
+.overlay { overflow-y: scroll; }
+
+[aria-hidden="true"] { display: none; }
+[aria-hidden="false"] { display: block; }
+

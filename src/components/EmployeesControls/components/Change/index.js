@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import * as tableActions from 'actions/TableActions';
 
-
 // TODO: move to containers folder
 
 class ChangeField extends Component {
@@ -15,21 +14,18 @@ class ChangeField extends Component {
 
     const fieldData = filteredArray[0];
 
-    let changeFormHTML = [];
-
-    for (const key in fieldData) {
-      if (Object.prototype.hasOwnProperty.call(fieldData, key)) {
-        changeFormHTML.push(
-          <div>12</div>
-        );
-      }
-    }
+    const changeFormHTML = Object.keys(fieldData).map((item, i) => {
+      return (
+        <div key={ i }>
+          <label htmlFor={ `changeForm-${item}` }>{ item }</label>
+          <input id={ `changeForm-${item}` } type="text" defaultValue={ fieldData[item] }/>
+        </div>
+      );
+    });
 
     return (
       <div>
         <form action="">
-          <input type="text" defaultValue={ filteredArray[0].id } />
-          <input type="text" defaultValue={ filteredArray[0].name }/>
           { changeFormHTML }
         </form>
       </div>

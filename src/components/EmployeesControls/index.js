@@ -37,7 +37,7 @@ export default class EmployeesControls extends Component {
     if (e.target.closest('.controls-btn')) e.preventDefault();
   };
 
-  toggleModalBox(modalboxName) {
+  toggleModalBox(e, modalboxName) {
     this.setState({
       modalBoxesIsOpenStates: {
         [modalboxName]: !this.state.modalBoxesIsOpenStates[modalboxName]
@@ -49,7 +49,11 @@ export default class EmployeesControls extends Component {
     const listHTML = Object.keys(listData).map((key, i) => {
       return (
         <li className="controls-elem" key={ i } title={ listData[key] }>
-          <a href="" className={`controls-btn ${key}`} role="button" onClick={ () => { ::this.toggleModalBox(key) } }>
+          <a
+            href=""
+            className={`controls-btn ${key} open-overlay`}
+            role="button"
+            onClick={ (e) => { ::this.toggleModalBox(e, key) } }>
             <i className={`sprite sprite-${key}`}></i>
             { listData[key] }
           </a>

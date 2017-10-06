@@ -1,9 +1,13 @@
 import getAllEmployeesAPI from '../services/api/employees/getAllEmployees';
+import changeEmployeeAPI from '../services/api/employees/changeEmployee';
 
 import {
   GET_ALL_EMPLOYEES_REQUEST,
   GET_ALL_EMPLOYEES_SUCCESS,
   GET_ALL_EMPLOYEES_FAILURE,
+  EDIT_EMPLOYEE_REQUEST,
+  EDIT_EMPLOYEE_SUCCESS,
+  EDIT_EMPLOYEE_FAILURE,
   SET_NEW_ACTIVE_ROW
 } from '../constants/index';
 
@@ -14,8 +18,8 @@ export function getAllEmployees() {
       payload: 'Loading...'
     });
 
-    // getAllEmployeesAPI('http://localhost:8080/test/employees')
-    getAllEmployeesAPI('./data.json')
+    getAllEmployeesAPI('http://localhost:8080/test/employees')
+    // getAllEmployeesAPI('./data.json')
       .then((response) => {
         dispatch({
           type: GET_ALL_EMPLOYEES_SUCCESS,
@@ -36,4 +40,29 @@ export function setNewActiveRow(id) {
     type: SET_NEW_ACTIVE_ROW,
     payload: id
   };
+}
+
+export function editEmployee(id, fieldsData) {
+  return ((dispatch) => {
+    dispatch({
+      type: EDIT_EMPLOYEE_REQUEST
+    });
+
+    changeEmployeeAPI()
+      .then(() => {
+        dispatch({
+          type: EDIT_EMPLOYEE_SUCCESS,
+          payload: {
+            id,
+            fieldsData
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: EDIT_EMPLOYEE_FAILURE
+        });
+      });
+  });
 }
