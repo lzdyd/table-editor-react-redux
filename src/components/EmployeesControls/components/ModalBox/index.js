@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.scss';
 
-export default function ({ show, onClose, modalboxName, data, activeRow }) {
+export default function ({ show, onClose, modalboxName, data, activeRow, tableActionsAPI }) {
   if (!show) {
     return null;
   }
@@ -38,7 +38,7 @@ export default function ({ show, onClose, modalboxName, data, activeRow }) {
   return (
     <div className="backdrop" style={ backdropStyle } onClick={ onModalBoxClick }>
       <div className="modal" style={ modalStyle }>
-        <ModalBoxHTML data={ data } activeRow={ activeRow }/>
+        <ModalBoxHTML data={ data } activeRow={ activeRow } tableActionsAPI={ tableActionsAPI }/>
         <button className="close-button">Close</button>
       </div>
     </div>

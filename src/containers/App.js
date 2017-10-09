@@ -11,6 +11,7 @@ class App extends Component {
   render() {
     const { setName } = this.props.pageActions;
     const { setNewActiveRow } = this.props.tableActions;
+    const tableActionsAPI = this.props.tableActions;
 
     return (
       <div className="main-app">
@@ -20,6 +21,7 @@ class App extends Component {
           fetching={ this.props.employeesControls.fetching }
           data={ this.props.employeesTable.data }
           activeRow={ this.props.employeesTable.activeRow }
+          tableActionsAPI={ tableActionsAPI }
         />
         <EmployeesTable
           getAllEmployees={ this.props.tableActions.getAllEmployees }

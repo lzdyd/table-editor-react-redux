@@ -64,6 +64,7 @@ export default class EmployeesControls extends Component {
             modalboxName={ key[0].toUpperCase() + key.slice(1) }
             data={ (key === 'change') ? this.props.data : null }
             activeRow={ (key === 'change') ? this.props.activeRow : null }
+            tableActionsAPI={ this.props.tableActionsAPI }
           />
         </li>
       );

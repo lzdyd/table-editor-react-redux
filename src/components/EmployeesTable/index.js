@@ -34,6 +34,10 @@ export default class EmployeesTable extends Component {
           onClick={ () => { ::this.onTableRowClick(item.id) } }>
           {
             itemValues.map((cellData, key) => {
+              if (typeof cellData === 'boolean') {
+                cellData = cellData.toString();
+              }
+
               return (
                 <div className="table-cell" key={ key }>{ cellData }</div>
               );

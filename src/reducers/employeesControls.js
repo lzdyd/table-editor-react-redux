@@ -18,7 +18,7 @@ export default function user(state = initialState, action) {
 
 import {
   SET_NAME_REQUEST,
-  SET_NAME_SUCCESS
+  SET_NAME_SUCCESS,
 } from '../constants/index';
 
 const initialState = {
