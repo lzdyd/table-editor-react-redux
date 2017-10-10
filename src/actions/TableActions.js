@@ -1,6 +1,6 @@
-import getAllEmployeesAPI from '../services/api/employees/getAllEmployees';
-import changeEmployeeAPI from '../services/api/employees/changeEmployee';
-import createEmployeeAPI from '../services/api/employees/createEmployee';
+import getAllEmployeesAPI from 'api/employees/getAllEmployees';
+import changeEmployeeAPI from 'api/employees/changeEmployee';
+import createEmployeeAPI from 'api/employees/createEmployee';
 
 import {
   GET_ALL_EMPLOYEES_REQUEST,
@@ -22,8 +22,7 @@ export function getAllEmployees() {
       payload: 'Loading...'
     });
 
-    getAllEmployeesAPI('http://localhost:8080/test/employees')
-    // getAllEmployeesAPI('./data.json')
+    getAllEmployeesAPI()
       .then((response) => {
         dispatch({
           type: GET_ALL_EMPLOYEES_SUCCESS,
@@ -39,56 +38,9 @@ export function getAllEmployees() {
   });
 }
 
-export function createNewEmployee(body) {
-  return ((dispatch) => {
-    dispatch({
-      type: CREATE_NEW_EMPLOYEE_REQUEST
-    });
-
-    createEmployeeAPI(body)
-      .then((response) => {
-        dispatch({
-          type: CREATE_NEW_EMPLOYEE_SUCCESS,
-          payload: JSON.parse(response)
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        dispatch({
-          type: CREATE_NEW_EMPLOYEE_FAILURE
-        });
-      });
-  });
-}
-
 export function setNewActiveRow(id) {
   return {
     type: SET_NEW_ACTIVE_ROW,
     payload: id
   };
-}
-
-export function editEmployee(id, fieldsData) {
-  return ((dispatch) => {
-    dispatch({
-      type: EDIT_EMPLOYEE_REQUEST
-    });
-
-    changeEmployeeAPI()
-      .then(() => {
-        dispatch({
-          type: EDIT_EMPLOYEE_SUCCESS,
-          payload: {
-            id,
-            fieldsData
-          }
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch({
-          type: EDIT_EMPLOYEE_FAILURE
-        });
-      });
-  });
 }

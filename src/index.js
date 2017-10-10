@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-// import tableApp from './reducers';
-// import configureStore from './store/configureStore';
 import App from './containers/App';
-
-import "./common/style.scss";
-
-// const store = createStore();
-
 import configureStore from './store/configureStore';
+
+import './common/style.scss';
 
 const store = configureStore();
 

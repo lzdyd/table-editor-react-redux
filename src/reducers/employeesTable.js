@@ -2,15 +2,22 @@ import {
   GET_ALL_EMPLOYEES_REQUEST,
   GET_ALL_EMPLOYEES_SUCCESS,
   GET_ALL_EMPLOYEES_FAILURE,
-  CREATE_NEW_EMPLOYEE_REQUEST,
-  CREATE_NEW_EMPLOYEE_SUCCESS,
-  SET_NEW_ACTIVE_ROW, CREATE_NEW_EMPLOYEE_FAILURE
+  SET_NEW_ACTIVE_ROW
 } from '../constants/index';
 
+/**
+ * @description Creates initial state for table
+ * @property { object }  data      - Contains table data
+ * @property { boolean } fetching  - If true, inform that data is being fetched
+ * @property { number }  activeRow - Key of highlighted row
+ * @property { boolean } error     - Informs that data is inapproachable in case of error
+ */
+
 const initialState = {
-  data: null,
+  data: {},
   fetching: true,
-  activeRow: 1
+  activeRow: 1,
+  error: false
 };
 
 export default function employeesTable(state = initialState, action) {
@@ -26,15 +33,6 @@ export default function employeesTable(state = initialState, action) {
 
     case SET_NEW_ACTIVE_ROW:
       return { ...state, activeRow: action.payload };
-
-    case CREATE_NEW_EMPLOYEE_REQUEST:
-      return { ...state, fetching: true };
-
-    case CREATE_NEW_EMPLOYEE_SUCCESS:
-      return { ...state, data: state.data.concat(action.payload), fetching: false };
-
-    case CREATE_NEW_EMPLOYEE_FAILURE:
-      return { ...state, fetching: false };
 
     default:
       return state;

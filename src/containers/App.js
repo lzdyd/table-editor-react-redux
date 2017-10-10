@@ -2,33 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as pageActions from '../actions/PageActions';
 import * as tableActions from '../actions/TableActions';
+
 import EmployeesControls from '../components/EmployeesControls/index';
 import EmployeesTable from '../components/EmployeesTable/index';
 
 class App extends Component {
   render() {
-    const { setName } = this.props.pageActions;
-    const { setNewActiveRow } = this.props.tableActions;
-    const tableActionsAPI = this.props.tableActions;
+    const { data, fetching, activeRow, error } = this.props.employeesTable;
+
+    const getAllEmployeesAPI = this.props.tableActions.getAllEmployees;
+    const setNewActiveRow = this.props.tableActions.setNewActiveRow;
 
     return (
       <div className="main-app">
-        <EmployeesControls
-          name={ this.props.employeesControls.name }
-          setName={ setName }
-          fetching={ this.props.employeesControls.fetching }
-          data={ this.props.employeesTable.data }
-          activeRow={ this.props.employeesTable.activeRow }
-          tableActionsAPI={ tableActionsAPI }
-        />
+        <EmployeesControls />
         <EmployeesTable
-          getAllEmployees={ this.props.tableActions.getAllEmployees }
-          data={ this.props.employeesTable.data }
-          fetching={ this.props.employeesTable.fetching }
-          error={ this.props.employeesTable.error }
-          activeRow={ this.props.employeesTable.activeRow }
+          data={ data }
+          fetching={ fetching }
+          activeRow={ activeRow }
+          error={ error }
+          getAllEmployeesAPI={ getAllEmployeesAPI }
           setNewActiveRow={ setNewActiveRow }
         />
       </div>
@@ -36,22 +30,15 @@ class App extends Component {
   }
 }
 
-/* selectors
-function getEmploy(store) {
-  return store.employeesControls;
-}
-*/
-
 const mapStateToProps = (state) => {
   return {
-    employeesControls: state.employeesControls,
+    employeesTableControls: state.employeesTableControls,
     employeesTable: state.employeesTable
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    pageActions: bindActionCreators(pageActions, dispatch),
     tableActions: bindActionCreators(tableActions, dispatch)
   };
 };

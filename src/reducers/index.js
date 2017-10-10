@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import employeesTable from './employeesTable';
-import employeesControls from './employeesControls';
+import employeesTableControls from './employeesTableControls';
 
 export default combineReducers({
   employeesTable,
-  employeesControls
+  employeesTableControls
 });

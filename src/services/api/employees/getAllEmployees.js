@@ -1,10 +1,8 @@
-const getAllEmployees = (url) => {
+const getAllEmployees = () => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url);
-
-    // xhr.setRequestHeader("Authorization", "Basic " + btoa('admin' + ":" + 'admin'));
+    xhr.open('GET', 'http://localhost:8080/test/employees');
 
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('content-type', 'application/json');
@@ -27,6 +25,6 @@ const getAllEmployees = (url) => {
   });
 };
 
-export default function (url) {
-  return getAllEmployees(url);
+export default function () {
+  return getAllEmployees();
 }

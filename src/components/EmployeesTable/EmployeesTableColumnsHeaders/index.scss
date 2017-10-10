@@ -6,6 +6,10 @@
     &:not(:last-child) {
       border-right: 1px solid #ddd;
     }
+    
+    .fieldname {
+      cursor: pointer;
+    }
   }
 
   .table-cell-headers::after {
